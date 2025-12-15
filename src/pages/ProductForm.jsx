@@ -7,6 +7,7 @@ export default function ProductForm() {
     const navigate = useNavigate();
     const { id } = useParams();
     const [product, setProduct] = useState(null);
+    const [mensagem, setMensagem] = useState('');
 
     useEffect(() => {
         if (id) {
@@ -31,7 +32,8 @@ export default function ProductForm() {
                 .then(response => response.json())
                 .then(result => {
                     console.log(result);
-                    navigate(`/produtos/${id}`);
+                    setMensagem('Produto atualizado com sucesso!');
+                    setTimeout(() => navigate(`/produtos/${id}`), 2000);
                 });
         } else {
             fetch('https://dummyjson.com/products/add', {
@@ -47,7 +49,8 @@ export default function ProductForm() {
                 .then(response => response.json())
                 .then(result => {
                     console.log(result);
-                    navigate('/');
+                    setMensagem(`Produto criado com sucesso! ID: ${result.id}`);
+                    setTimeout(() => navigate('/'), 2000);
                 });
         }
     };
@@ -55,6 +58,9 @@ export default function ProductForm() {
     return (
         <div style={{ padding: '20px' }}>
             <h2>{id ? 'Editar Produto' : 'Cadastrar Novo Produto'}</h2>
+
+            {mensagem && <p style={{ color: 'green', fontWeight: 'bold' }}>{mensagem}</p>}
+
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div style={{ marginBottom: '10px' }}>
                     <label>Título:</label>
@@ -75,7 +81,6 @@ export default function ProductForm() {
                     />
                     {errors.preco && <p style={{ color: 'red' }}>{errors.preco.message}</p>}
                 </div>
-
                 <div style={{ marginBottom: '10px' }}>
                     <label>Descrição:</label>
                     <textarea
