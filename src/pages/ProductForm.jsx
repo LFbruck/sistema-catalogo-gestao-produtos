@@ -1,10 +1,31 @@
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProductForm() {
     const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        console.log(data);
+        fetch('https://dummyjson.com/products/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: data.titulo,
+                price: data.preco,
+                description: data.descricao,
+                category: data.categoria
+            })
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log('Produto cadastrado:', result);
+                navigate('/');
+            })
+            .catch(error => {
+                console.error('Erro ao cadastrar produto:', error);
+            });
     };
 
     return (
@@ -36,5 +57,3 @@ export default function ProductForm() {
         </div>
     );
 }
-
-
