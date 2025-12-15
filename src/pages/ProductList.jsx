@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ProductList() {
     const [products, setProducts] = useState([]);
@@ -20,7 +21,6 @@ export default function ProductList() {
     if (loading) {
         return <div><h2>Carregando Produtos...</h2></div>;
     }
-
     return (
         <div>
             <h2>Lista de Produtos</h2>
@@ -28,7 +28,9 @@ export default function ProductList() {
                 {products.map(product => (
                     <div key={product.id} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
                         <img src={product.thumbnail} alt={product.title} style={{ width: '100px' }} />
-                        <h3>{product.title}</h3>
+                        <h3>
+                            <Link to={`/produtos/${product.id}`}>{product.title}</Link>
+                        </h3>
                         <p>Preço: ${product.price}</p>
                     </div>
                 ))}
