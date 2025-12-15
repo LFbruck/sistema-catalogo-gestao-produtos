@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function ProductList() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [mensagem, setMensagem] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('https://dummyjson.com/products/search?q=apple')
@@ -39,9 +40,7 @@ export default function ProductList() {
     return (
         <div>
             <h2>Lista de Produtos</h2>
-
             {mensagem && <div className="mensagem">{mensagem}</div>}
-
             <div className="lista-produtos">
                 {products.map(product => (
                     <div key={product.id} className="produto-card">
@@ -50,9 +49,7 @@ export default function ProductList() {
                             <Link to={`/produtos/${product.id}`}>{product.title}</Link>
                         </h3>
                         <p>R$ {product.price}</p>
-                        <Link to={`/novo/${product.id}`}>
-                            <button>Editar</button>
-                        </Link>
+                        <button onClick={() => navigate(`/novo/${product.id}`)}>Editar</button>
                         <button onClick={() => excluirProduto(product.id)}>Excluir</button>
                     </div>
                 ))}

@@ -17,6 +17,10 @@ body {
 
 header {
     background-color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: white;
     padding: 20px;
     margin-bottom: 30px;
@@ -89,14 +93,15 @@ header nav a:hover {
     font-size: 14px;
 }
 .produto-card button:first-of-type {
-    background-color: #007bff;
-    color: white;
+    background-color: #ffc107;
+    color: #333;
 }
 
 .produto-card button:last-of-type {
-    background-color: #dc3545;
+    background-color: red;
     color: white;
 }
+
 
 .produto-card button:hover {
     opacity: 0.8;
