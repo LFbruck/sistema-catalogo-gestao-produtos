@@ -17,7 +17,7 @@ export default function ProductList() {
             });
     }, []);
     if (loading) {
-        return <div><h2>Carregando Prodos...</h2></div>;
+        return <div><h2>Carregando Produtos...</h2></div>;
     }
     return (
         <div>
@@ -30,6 +30,9 @@ export default function ProductList() {
                             <Link to={`/produtos/${product.id}`}>{product.title}</Link>
                         </h3>
                         <p>Preço: R$ {product.price}</p>
+                        <Link to={`/novo/${product.id}`}>
+                            <button>Editar</button>
+                        </Link>
                     </div>
                 ))}
             </div>
