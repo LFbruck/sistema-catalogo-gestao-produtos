@@ -15,26 +15,43 @@ export default function ProductForm() {
                 .then(data => setProduct(data));
         }
     }, [id]);
-    const onSubmit = (data) => {
-        const url = id ? `https://dummyjson.com/products/${id}` : 'https://dummyjson.com/products/add';
-        const method = id ? 'PUT' : 'POST';
 
-        fetch(url, {
-            method: method,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                title: data.titulo,
-                price: data.preco,
-                description: data.descricao,
-                category: data.categoria
+    const onSubmit = (data) => {
+        if (id) {
+            fetch(`https://dummyjson.com/products/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    title: data.titulo,
+                    price: data.preco,
+                    description: data.descricao,
+                    category: data.categoria
+                })
             })
-        })
-            .then(response => response.json())
-            .then(result => {
-                console.log(result);
-                navigate('/');
-            });
+                .then(response => response.json())
+                .then(result => {
+                    console.log(result);
+                    navigate(`/produtos/${id}`);
+                });
+        } else {
+            fetch('https://dummyjson.com/products/add', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    title: data.titulo,
+                    price: data.preco,
+                    description: data.descricao,
+                    category: data.categoria
+                })
+            })
+                .then(response => response.json())
+                .then(result => {
+                    console.log(result);
+                    navigate('/');
+                });
+        }
     };
+
     return (
         <div style={{ padding: '20px' }}>
             <h2>{id ? 'Editar Produto' : 'Cadastrar Novo Produto'}</h2>
@@ -58,6 +75,7 @@ export default function ProductForm() {
                     />
                     {errors.preco && <p style={{ color: 'red' }}>{errors.preco.message}</p>}
                 </div>
+
                 <div style={{ marginBottom: '10px' }}>
                     <label>Descrição:</label>
                     <textarea
@@ -66,6 +84,7 @@ export default function ProductForm() {
                     ></textarea>
                     {errors.descricao && <p style={{ color: 'red' }}>{errors.descricao.message}</p>}
                 </div>
+
                 <div style={{ marginBottom: '10px' }}>
                     <label>Categoria:</label>
                     <input
