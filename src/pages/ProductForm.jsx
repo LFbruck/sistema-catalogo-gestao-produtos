@@ -67,7 +67,10 @@ export default function ProductForm() {
                     <input
                         type="text"
                         defaultValue={product?.title}
-                        {...register('titulo', { required: 'O título é obrigatório' })}
+                        {...register('titulo', {
+                            required: 'O título é obrigatório',
+                            maxLength: { value: 50, message: 'O título deve ter no máximo 50 caracteres' }
+                        })}
                     />
                     {errors.titulo && <p style={{ color: 'red' }}>{errors.titulo.message}</p>}
                 </div>
@@ -76,11 +79,16 @@ export default function ProductForm() {
                     <label>Preço:</label>
                     <input
                         type="number"
+                        step="0.01"
                         defaultValue={product?.price}
-                        {...register('preco', { required: 'O preço é obrigatório' })}
+                        {...register('preco', {
+                            required: 'O preço é obrigatório',
+                            min: { value: 0.01, message: 'O preço deve ser maior que 0' }
+                        })}
                     />
                     {errors.preco && <p style={{ color: 'red' }}>{errors.preco.message}</p>}
                 </div>
+
                 <div style={{ marginBottom: '10px' }}>
                     <label>Descrição:</label>
                     <textarea
@@ -98,6 +106,7 @@ export default function ProductForm() {
                         {...register('categoria')}
                     />
                 </div>
+
                 <button type="submit">{id ? 'Atualizar' : 'Cadastrar'}</button>
             </form>
         </div>
