@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
+import Header from './componentes/Header';
 import ProductList from './pages/ProductList';
 import ProductForm from './pages/ProductForm';
 import ProductDetail from './pages/ProductDetail';
