@@ -6,7 +6,7 @@ export default function ProductList() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://dummyjson.com/products')
+        fetch('https://dummyjson.com/products/search?q=apple')
             .then(response => response.json())
             .then(data => {
                 setProducts(data.products);
