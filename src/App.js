@@ -1,14 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './componentes/Header';
 import ProductList from './pages/ProductList';
 import ProductForm from './pages/ProductForm';
 import ProductDetail from './pages/ProductDetail';
 import './App.css';
 
-function App() {
+export default function App() {
     return (
         <BrowserRouter>
             <div className="App">
-                <h1>Sistema de Catálogo e Gestão de Produtos</h1>
+                <Header />
                 <Routes>
                     <Route path="/" element={<ProductList />} />
                     <Route path="/novo" element={<ProductForm />} />
@@ -18,5 +19,3 @@ function App() {
         </BrowserRouter>
     );
 }
-
-export default App;
