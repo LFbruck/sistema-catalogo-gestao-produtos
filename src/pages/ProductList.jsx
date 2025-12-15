@@ -16,6 +16,17 @@ export default function ProductList() {
                 setLoading(false);
             });
     }, []);
+    const excluirProduto = (id) => {
+        fetch(`https://dummyjson.com/products/${id}`, {
+            method: 'DELETE'
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+                setProducts(products.filter(product => product.id !== id));
+            });
+    };
+
     if (loading) {
         return <div><h2>Carregando Produtos...</h2></div>;
     }
@@ -33,6 +44,7 @@ export default function ProductList() {
                         <Link to={`/novo/${product.id}`}>
                             <button>Editar</button>
                         </Link>
+                        <button onClick={() => excluirProduto(product.id)}>Excluir</button>
                     </div>
                 ))}
             </div>
