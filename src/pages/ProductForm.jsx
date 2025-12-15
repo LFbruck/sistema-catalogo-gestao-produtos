@@ -2,9 +2,8 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 export default function ProductForm() {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
-
     const onSubmit = (data) => {
         fetch('https://dummyjson.com/products/add', {
             method: 'POST',
@@ -27,31 +26,37 @@ export default function ProductForm() {
                 console.error('Erro ao cadastrar produto:', error);
             });
     };
-
     return (
         <div style={{ padding: '20px' }}>
             <h2>Cadastrar Novo Produto</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div style={{ marginBottom: '10px' }}>
                     <label>Título:</label>
-                    <input type="text" {...register('titulo')} />
+                    <input
+                        type="text"
+                        {...register('titulo', { required: 'O título é obrigatório' })}
+                    />
+                    {errors.titulo && <p style={{ color: 'red' }}>{errors.titulo.message}</p>}
                 </div>
-
                 <div style={{ marginBottom: '10px' }}>
                     <label>Preço:</label>
-                    <input type="number" {...register('preco')} />
+                    <input
+                        type="number"
+                        {...register('preco', { required: 'O preço é obrigatório' })}
+                    />
+                    {errors.preco && <p style={{ color: 'red' }}>{errors.preco.message}</p>}
                 </div>
-
                 <div style={{ marginBottom: '10px' }}>
                     <label>Descrição:</label>
-                    <textarea {...register('descricao')}></textarea>
+                    <textarea
+                        {...register('descricao', { required: 'A descrição é obrigatória' })}
+                    ></textarea>
+                    {errors.descricao && <p style={{ color: 'red' }}>{errors.descricao.message}</p>}
                 </div>
-
                 <div style={{ marginBottom: '10px' }}>
                     <label>Categoria:</label>
                     <input type="text" {...register('categoria')} />
                 </div>
-
                 <button type="submit">Cadastrar</button>
             </form>
         </div>

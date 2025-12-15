@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 export default function ProductList() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         fetch('https://dummyjson.com/products/search?q=apple')
             .then(response => response.json())
@@ -17,11 +16,9 @@ export default function ProductList() {
                 setLoading(false);
             });
     }, []);
-
     if (loading) {
-        return <div><h2>Carregando Produtos...</h2></div>;
+        return <div><h2>Carregando Prodos...</h2></div>;
     }
-
     return (
         <div>
             <h2>Lista de Produtos</h2>

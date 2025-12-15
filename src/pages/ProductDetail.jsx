@@ -20,11 +20,11 @@ export default function ProductDetail() {
     }, [id]);
 
     if (loading) {
-        return <div><h2>Carregando...</h2></div>;
+        return <div><h2>Carregando......</h2></div>;
     }
 
     if (!product) {
-        return <div><h2>Produto não encontrado</h2></div>;
+        return <div><h2>Produto não foi. encontrado</h2></div>;
     }
 
     return (
