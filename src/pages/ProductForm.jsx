@@ -106,7 +106,6 @@ export default function ProductForm() {
                         {...register('categoria')}
                     />
                 </div>
-
                 <button type="submit">{id ? 'Atualizar' : 'Cadastrar'}</button>
             </form>
         </div>
