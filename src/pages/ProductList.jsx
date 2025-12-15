@@ -40,15 +40,16 @@ export default function ProductList() {
         <div>
             <h2>Lista de Produtos</h2>
 
-            {mensagem && <p style={{ color: 'green', fontWeight: 'bold' }}>{mensagem}</p>}
-            <div>
+            {mensagem && <div className="mensagem">{mensagem}</div>}
+
+            <div className="lista-produtos">
                 {products.map(product => (
-                    <div key={product.id} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
-                        <img src={product.thumbnail} alt={product.title} style={{ width: '100px' }} />
+                    <div key={product.id} className="produto-card">
+                        <img src={product.thumbnail} alt={product.title} />
                         <h3>
                             <Link to={`/produtos/${product.id}`}>{product.title}</Link>
                         </h3>
-                        <p>Preço: R$ {product.price}</p>
+                        <p>R$ {product.price}</p>
                         <Link to={`/novo/${product.id}`}>
                             <button>Editar</button>
                         </Link>

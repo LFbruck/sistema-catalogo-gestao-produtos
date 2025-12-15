@@ -56,13 +56,13 @@ export default function ProductForm() {
     };
 
     return (
-        <div style={{ padding: '20px' }}>
+        <div>
             <h2>{id ? 'Editar Produto' : 'Cadastrar Novo Produto'}</h2>
 
-            {mensagem && <p style={{ color: 'green', fontWeight: 'bold' }}>{mensagem}</p>}
+            {mensagem && <div className="mensagem">{mensagem}</div>}
 
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div style={{ marginBottom: '10px' }}>
+                <div>
                     <label>Título:</label>
                     <input
                         type="text"
@@ -72,10 +72,10 @@ export default function ProductForm() {
                             maxLength: { value: 50, message: 'O título deve ter no máximo 50 caracteres' }
                         })}
                     />
-                    {errors.titulo && <p style={{ color: 'red' }}>{errors.titulo.message}</p>}
+                    {errors.titulo && <p className="erro">{errors.titulo.message}</p>}
                 </div>
 
-                <div style={{ marginBottom: '10px' }}>
+                <div>
                     <label>Preço:</label>
                     <input
                         type="number"
@@ -86,19 +86,19 @@ export default function ProductForm() {
                             min: { value: 0.01, message: 'O preço deve ser maior que 0' }
                         })}
                     />
-                    {errors.preco && <p style={{ color: 'red' }}>{errors.preco.message}</p>}
+                    {errors.preco && <p className="erro">{errors.preco.message}</p>}
                 </div>
 
-                <div style={{ marginBottom: '10px' }}>
+                <div>
                     <label>Descrição:</label>
                     <textarea
                         defaultValue={product?.description}
                         {...register('descricao', { required: 'A descrição é obrigatória' })}
                     ></textarea>
-                    {errors.descricao && <p style={{ color: 'red' }}>{errors.descricao.message}</p>}
+                    {errors.descricao && <p className="erro">{errors.descricao.message}</p>}
                 </div>
 
-                <div style={{ marginBottom: '10px' }}>
+                <div>
                     <label>Categoria:</label>
                     <input
                         type="text"
@@ -106,6 +106,7 @@ export default function ProductForm() {
                         {...register('categoria')}
                     />
                 </div>
+
                 <button type="submit">{id ? 'Atualizar' : 'Cadastrar'}</button>
             </form>
         </div>

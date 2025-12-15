@@ -167,3 +167,21 @@ form button:hover {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+.detalhes h2 {
+    margin-bottom: 20px;
+}
+
+.detalhes p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.detalhes img {
+    width: 300px;
+    margin: 10px;
+    border-radius: 3px;
+}
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}

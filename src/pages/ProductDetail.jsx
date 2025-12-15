@@ -18,17 +18,14 @@ export default function ProductDetail() {
                 setLoading(false);
             });
     }, [id]);
-
     if (loading) {
-        return <div><h2>Carregando......</h2></div>;
+        return <div><h2>Carregando...</h2></div>;
     }
-
     if (!product) {
-        return <div><h2>Produto não foi. encontrado</h2></div>;
+        return <div><h2>Produto não encontrado</h2></div>;
     }
-
     return (
-        <div style={{ padding: '20px' }}>
+        <div className="detalhes">
             <h2>{product.title}</h2>
             <p><strong>Preço:</strong> R$ {product.price}</p>
             <p><strong>Descrição:</strong> {product.description}</p>
@@ -36,7 +33,7 @@ export default function ProductDetail() {
                 <strong>Imagens:</strong>
                 <div>
                     {product.images.map((img, index) => (
-                        <img key={index} src={img} alt={product.title} style={{ width: '200px', margin: '10px' }} />
+                        <img key={index} src={img} alt={product.title} />
                     ))}
                 </div>
             </div>
