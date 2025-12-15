@@ -3,6 +3,10 @@
 Sistema de gerenciamento de produtos desenvolvido com React, React Router e React Hook Form.
 Desenvolvido para materia de Fundamentos de React, pelo Instituto InfNet.
 
+## 🚀 Projeto Online
+
+Acesse o projeto: [Vercel Deploy](https://sistema-catalogo-gestao-produtos.vercel.app/)
+
 ## Funcionalidades
 
 - Listagem de produtos
