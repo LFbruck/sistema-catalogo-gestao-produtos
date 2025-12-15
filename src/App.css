@@ -88,3 +88,16 @@ header nav a:hover {
     cursor: pointer;
     font-size: 14px;
 }
+.produto-card button:first-of-type {
+    background-color: #007bff;
+    color: white;
+}
+
+.produto-card button:last-of-type {
+    background-color: #dc3545;
+    color: white;
+}
+
+.produto-card button:hover {
+    opacity: 0.8;
+}
