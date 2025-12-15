@@ -30,7 +30,7 @@ export default function ProductDetail() {
     return (
         <div style={{ padding: '20px' }}>
             <h2>{product.title}</h2>
-            <p><strong>Preço:</strong> ${product.price}</p>
+            <p><strong>Preço:</strong> R$ {product.price}</p>
             <p><strong>Descrição:</strong> {product.description}</p>
             <div>
                 <strong>Imagens:</strong>
