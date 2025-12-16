@@ -5,7 +5,7 @@ Desenvolvido para materia de Fundamentos de React, pelo Instituto InfNet.
 
 ## 🚀 Projeto Online
 
-Acesse o projeto: [Vercel Deploy](https://sistema-catalogo-gestao-produtos.vercel.app/)
+Acesse o projeto Online: [Vercel Deploy](https://sistema-catalogo-gestao-produtos.vercel.app/)
 
 ## Funcionalidades
 
